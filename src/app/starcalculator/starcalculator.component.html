@@ -1,0 +1,468 @@
+<h1 class="bg-info text-white">Star Calculator</h1>
+<br />
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-3">
+      <form>
+        <div class="row">
+          <div class="col mt-2">Buliding ID: <span id="schoolID">#</span></div>
+          <div class="col">
+            <select
+              id="schoolLevelSelect"
+              class="custom-select"
+              (change)="formSetup($event)"
+            >
+              <option selected>Level</option>
+              <option value="ES">ES</option>
+              <option value="MS">MS</option>
+              <option value="HS">HS</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col bg-secondary text-white m-3">
+            Academic Achievment
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6" style="text-align: left;">
+            <label for="crtPooledProficiency" class="mt-1 esInput msInput"
+              >Pooled Proficiency</label
+            >
+          </div>
+          <span class="col-2 mt-2 esInput msInput" style="text-align: right;"
+            ><i
+              id="pooledMenuButton"
+              class="fas fa-angle-double-down"
+              (click)="togglePooledInputs()"
+            ></i
+          ></span>
+          <div class="col">
+            <input
+              type="number"
+              id="crtPooledProficiency"
+              class="form-control holdInput esInput msInput"
+              placeholder="Rate"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8" style="text-align: left;">
+            <label for="pooledMath" class="mt-1 esInput msInput pooledInput"
+              >Math</label
+            >
+          </div>
+          <div class="col">
+            <input
+              type="number"
+              id="pooledMath"
+              class="form-control holdInput esInput msInput pooledInput"
+              placeholder="Rate"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8" style="text-align: left;">
+            <label for="pooledELA" class="mt-1 esInput msInput pooledInput"
+              >ELA</label
+            >
+          </div>
+          <div class="col">
+            <input
+              type="number"
+              id="pooledELA"
+              class="form-control holdInput esInput msInput pooledInput"
+              placeholder="Rate"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8" style="text-align: left;">
+            <label for="pooledScience" class="mt-1 esInput msInput pooledInput"
+              >Science</label
+            >
+          </div>
+          <div class="col">
+            <input
+              type="number"
+              id="pooledScience"
+              class="form-control holdInput esInput msInput pooledInput"
+              placeholder="Rate"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8" style="text-align: left;">
+            <label for="elaProficiency" class="mt-1 esInput">Grd 3 ELA</label>
+          </div>
+          <div class="col esInput">
+            <input
+              type="number"
+              id="elaProficiency"
+              class="form-control holdInput esInput"
+              placeholder="Rate"
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-8 hsInput" style="text-align: left;">
+            <label for="ccrMath" class="mt-1"> CCR Math</label>
+          </div>
+          <div class="col">
+            <input
+              type="number"
+              id="ccrMath"
+              class="form-control holdInput hsInput"
+              placeholder="Rate"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8 hsInput" style="text-align: left;">
+            <label for="ccrELA" class="mt-1">CCR ELA</label>
+          </div>
+          <div class="col">
+            <input
+              type="number"
+              id="ccrELA"
+              class="form-control holdInput hsInput"
+              placeholder="Rate"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8 hsInput" style="text-align: left;">
+            <label for="hsScience" class="mt-1">Nevada HS Science</label>
+          </div>
+          <div class="col">
+            <input
+              type="number"
+              id="hsScience"
+              class="form-control holdInput hsInput"
+              placeholder="Rate"
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col bg-secondary text-white m-3 esInput msInput">
+            Growth
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8 esInput msInput" style="text-align: left;">
+            <label for="mathCRTmgp" class="mt-1">Math CRT MGP</label>
+          </div>
+          <div class="col">
+            <input
+              type="number"
+              id="mathCRTmgp"
+              class="form-control holdInput esInput msInput"
+              placeholder="Rate"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8 esInput msInput" style="text-align: left;">
+            <label for="elaCRTmgp" class="mt-1">ELA CRT MGP</label>
+          </div>
+          <div class="col">
+            <input
+              type="number"
+              id="elaCRTmgp"
+              class="form-control holdInput esInput msInput"
+              placeholder="Rate"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8 esInput msInput" style="text-align: left;">
+            <label for="mathCRTagp" class="mt-1">Math CRT AGP</label>
+          </div>
+          <div class="col">
+            <input
+              type="number"
+              id="mathCRTagp"
+              class="form-control holdInput esInput msInput"
+              placeholder="Rate"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8 esInput msInput" style="text-align: left;">
+            <label for="elaCRTagp" class="mt-1">ELA CRT AGP</label>
+          </div>
+          <div class="col">
+            <input
+              type="number"
+              id="elaCRTagp"
+              class="form-control holdInput esInput msInput"
+              placeholder="Rate"
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col bg-secondary text-white m-3 hsInput">
+            Graduation Rate
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8 hsInput" style="text-align: left;">
+            <label for="4yrACGR" class="mt-1">4-Year ACGR</label>
+          </div>
+          <div class="col">
+            <input
+              type="number"
+              id="4yrACGR"
+              class="form-control holdInput hsInput"
+              placeholder="Rate"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8 hsInput" style="text-align: left;">
+            <label for="5yrACGR" class="mt-1"> 5-Year ACGR</label>
+          </div>
+          <div class="col">
+            <input
+              type="number"
+              id="5yrACGR"
+              class="form-control holdInput hsInput"
+              placeholder="Rate"
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col bg-secondary text-white m-3 esInput msInput hsInput">
+            English Language Proficiency
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8 esInput msInput hsInput" style="text-align: left;">
+            <label for="WIDAagp" class="mt-1">WIDA AGP</label>
+          </div>
+          <div class="col">
+            <input
+              type="number"
+              id="WIDAagp"
+              class="form-control holdInput esInput msInput hsInput"
+              placeholder="Rate"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col bg-secondary text-white m-3 esInput msInput">
+            Closing Opportunity Gaps
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8 esInput msInput" style="text-align: left;">
+            <label for="mathGAP" class="mt-1">Math GAP</label>
+          </div>
+          <div class="col">
+            <input
+              type="number"
+              id="mathGAP"
+              class="form-control holdInput esInput msInput"
+              placeholder="Rate"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8 esInput msInput" style="text-align: left;">
+            <label for="elaGAP" class="mt-1">ELA GAP</label>
+          </div>
+          <div class="col">
+            <input
+              type="number"
+              id="elaGAP"
+              class="form-control holdInput esInput msInput"
+              placeholder="Rate"
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col bg-secondary text-white m-3 hsInput">
+            College Career Readiness
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8 hsInput" style="text-align: left;">
+            <label for="prepPart" class="mt-1">Prep Participation</label>
+          </div>
+          <div class="col">
+            <input
+              type="number"
+              id="prepPart"
+              class="form-control holdInput hsInput"
+              placeholder="Rate"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8 hsInput" style="text-align: left;">
+            <label for="prepComp" class="mt-1"> Prep Completion</label>
+          </div>
+          <div class="col">
+            <input
+              type="number"
+              id="prepComp"
+              class="form-control holdInput hsInput"
+              placeholder="Rate"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8 hsInput" style="text-align: left;">
+            <label for="diploma" class="mt-1"> Diploma</label>
+          </div>
+          <div class="col">
+            <input
+              type="number"
+              id="diploma"
+              class="form-control holdInput hsInput"
+              placeholder="Rate"
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col bg-secondary text-white m-3">
+            Student Engagement
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8 esInput msInput hsInput" style="text-align: left;">
+            <label for="chronAbsent" class="mt-1">Chronic Absenteeism</label>
+          </div>
+          <div class="col">
+            <input
+              type="number"
+              id="chronAbsent"
+              class="form-control holdInput esInput msInput hsInput"
+              placeholder="Rate"
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-8 msInput" style="text-align: left;">
+            <label for="nacCrdRqs" class="mt-1">NAC Credit Reqs</label>
+          </div>
+          <div class="col">
+            <input
+              type="number"
+              id="nacCrdRqs"
+              class="form-control holdInput msInput"
+              placeholder="Rate"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8 msInput" style="text-align: left;">
+            <label for="acadLrnPlan" class="mt-1"
+              >Academic Learning Plans</label
+            >
+          </div>
+          <div class="col">
+            <input
+              type="number"
+              id="acadLrnPlan"
+              class="form-control holdInput msInput"
+              placeholder="Rate"
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-8 hsInput" style="text-align: left;">
+            <label for="crdSuff" class="mt-1">Grade Credit Sufficiency</label>
+          </div>
+          <div class="col">
+            <input
+              type="number"
+              id="crdSuff"
+              class="form-control holdInput hsInput"
+              placeholder="Rate"
+            />
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col offset-8">
+            <button
+              type="submit"
+              class="btn btn-info calcBtn"
+              disabled
+              (click)="buildDash()"
+            >
+              Calculate
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-9">
+      <div container-fluid>
+        <div class="row">
+          <div class="col-sm-4">
+            <h1>Score:</h1>
+            <h1 id="pointsView"></h1>
+          </div>
+          <div class="col-sm-8">
+            <h1>Stars:</h1>
+            <div class="stars-outer">
+              <div class="stars-inner"></div>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex flex-row justify-content-around mt-5">
+          <div class="col gauge gaugeGrpAcadAchiev">
+            <canvas id="gaugeAcadAchiev"></canvas>
+            <div class="value">NA</div>
+            <div class="details">Academic Achievement</div>
+          </div>
+          <div class="col gauge gaugeGrpGrowth">
+            <canvas id="gaugeGrowth"></canvas>
+            <div class="value">NA</div>
+            <div class="details">Growth</div>
+          </div>
+          <div class="col gauge gaugeGrpGradRate">
+            <canvas id="gaugeGradRate"></canvas>
+            <div class="value">NA</div>
+            <div class="details">Grad Rate</div>
+          </div>
+          <div class="col gauge gaugeGrpElaProf">
+            <canvas id="gaugeElaProf"></canvas>
+            <div class="value">NA</div>
+            <div class="details">ELA Proficiency</div>
+          </div>
+          <div class="col gauge gaugeGrpOppGap">
+            <canvas id="gaugeOppGap"></canvas>
+            <div class="value">NA</div>
+            <div class="details">Closing Opportunity Gaps</div>
+          </div>
+          <div class="col gauge gaugeGrpReadiness">
+            <canvas id="gaugeReadiness"></canvas>
+            <div class="value">NA</div>
+            <div class="details">Coll/Career Readiness</div>
+          </div>
+          <div class="col gauge gaugeGrpEngage">
+            <canvas id="gaugeEngage"></canvas>
+            <div class="value">NA</div>
+            <div class="details">Student Engagement</div>
+          </div>
+        </div>
+        <div id="chartRow" class="row mt-5">
+          <div class="col">
+            <canvas id="lineChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

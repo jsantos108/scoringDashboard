@@ -1,0 +1,55 @@
+.details {
+  background-color: black;
+  padding: 5px 15px;
+  border-radius: 20px;
+  color: white;
+  position: relative;
+  bottom: 25%;
+  margin: auto;
+  display: inline;
+  font-size: 60%;
+}
+
+.gauge {
+  display: none;
+}
+
+#pointsView {
+  font-size: 60px;
+}
+
+.stars-outer {
+  position: relative;
+  display: inline-block;
+}
+
+.stars-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0%;
+}
+
+.stars-outer::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  font-family: "Font Awesome 5 Free";
+  font-size: 60px;
+  font-weight: 900;
+  color: #ccc;
+}
+
+.stars-inner::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  font-family: "Font Awesome 5 Free";
+  font-size: 60px;
+  font-weight: 900;
+  color: #004a9c;
+}
+
+.value {
+  font-size: 250%;
+  position: relative;
+  bottom: 40%;
+}
